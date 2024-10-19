@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"type="image/png" href="https://raw.githubusercontent.com/chilehero2023/chilehero.github.io/main/smugglinglogo2.png"/>
+    <title>INI Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet">
+    <link href="css/fontello.css" rel="stylesheet">
+    <link href="css/color.css" rel="stylesheet">
+</head>
+<body class="text-white">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+    <img src="https://raw.githubusercontent.com/chilehero2023/chilehero.github.io/main/smugglinglogo2.png" class="img-fluid" alt="..." width="40" height="40">
+</div>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="text-center">Upload an .ini file and edit the data</h1>
+    
+    <input type="file" id="fileInput" accept=".ini" class="form-control mb-3 w-25 mx-auto">
+
+    <form id="iniForm" class="text-center w-25 mx-auto">
+        <div class="mb-3">
+            <label for="artist" class="form-label">Artist:</label>
+            <input type="text" id="artist" name="artist" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Song:</label>
+            <input type="text" id="name" name="name" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="album" class="form-label">Album:</label>
+            <input type="text" id="album" name="album" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="genre" class="form-label">Genre:</label>
+            <input type="text" id="genre" name="genre" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="year" class="form-label">Year:</label>
+            <input type="text" id="year" name="year" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="charter" class="form-label">Charter:</label>
+            <input type="text" id="charter" name="charter" class="form-control">
+        </div>
+
+        <div class="mb-3"style="display:none">
+            <label for="song_length" class="form-label">Song Length:</label>
+            <input type="text" id="song_length" name="song_length" class="form-control" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="diff_guitar" class="form-label">Guitar Difficulty:</label>
+            <select id="diff_guitar" name="diff_guitar" class="form-select">
+                <option value="-1">No part</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="diff_bass" class="form-label">Bass Difficulty:</label>
+            <select id="diff_bass" name="diff_bass" class="form-select">
+                <option value="-1">No part</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="diff_drums" class="form-label">Drums Difficulty:</label>
+            <select id="diff_drums" name="diff_drums" class="form-select">
+                <option value="-1">No part</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="diff_vocals" class="form-label">Vocals Difficulty:</label>
+            <select id="diff_vocals" name="diff_vocals" class="form-select">
+                <option value="-1">No part</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+
+        <button type="button" onclick="downloadIni()" class="btn btn-primary">Download .ini file</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const lines = e.target.result.split('\n');
+            const iniData = {};
+
+            lines.forEach(line => {
+                const [key, value] = line.split('=');
+                if (key && value) {
+                    iniData[key.trim()] = value.trim();
+                }
+            });
+
+            document.getElementById('artist').value = iniData['artist'] || '';
+            document.getElementById('name').value = iniData['name'] || '';
+            document.getElementById('album').value = iniData['album'] || '';
+            document.getElementById('genre').value = iniData['genre'] || '';
+            document.getElementById('year').value = iniData['year'] || '';
+            document.getElementById('charter').value = iniData['charter'] || '';
+            document.getElementById('song_length').value = iniData['song_length'] || '';
+
+            document.getElementById('diff_guitar').value = iniData['diff_guitar'] || '-1';
+            document.getElementById('diff_bass').value = iniData['diff_bass'] || '-1';
+            document.getElementById('diff_drums').value = iniData['diff_drums'] || '-1';
+            document.getElementById('diff_vocals').value = iniData['diff_vocals'] || '-1';
+        };
+
+        reader.readAsText(file);
+    });
+
+    function downloadIni() {
+        const iniData = {
+            artist: document.getElementById('artist').value,
+            name: document.getElementById('name').value,
+            album: document.getElementById('album').value,
+            genre: document.getElementById('genre').value,
+            year: document.getElementById('year').value,
+            charter: document.getElementById('charter').value,
+            song_length: document.getElementById('song_length').value,
+            diff_guitar: document.getElementById('diff_guitar').value,
+            diff_bass: document.getElementById('diff_bass').value,
+            diff_drums: document.getElementById('diff_drums').value,
+            diff_vocals: document.getElementById('diff_vocals').value,
+        };
+
+        let iniString = '[song]\n'; // Add [song] tag
+        for (const [key, value] of Object.entries(iniData)) {
+            iniString += `${key} = ${value}\n`; // Space around the equals sign
+        }
+
+        const blob = new Blob([iniString], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'song.ini';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+</body>
+</html>

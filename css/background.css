@@ -1,0 +1,15 @@
+body{
+  background-image:url(../img/backgrounds.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.bg-dark{
+  background-image:url(../img/backgrounds.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+}
+.nav-link{
+  color: #ff0000 !important; 
+}
+

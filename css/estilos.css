@@ -1,0 +1,25 @@
+.text{
+    text-align: center;
+}
+.contenedor {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    	    
+}
+.contenedor2{
+    text-align: center;
+}
+.numerocanciones{
+    font-family: Digital_Dismay;
+    font-size: 30px;
+}
+@font-face {
+font-family: "Digital_Dismay";
+src: url("../fonts/Digital_Dismay.otf");
+  }

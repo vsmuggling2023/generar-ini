@@ -1,0 +1,25 @@
+.col{
+    overflow: hidden;
+    margin: 20px;
+}
+ #imagenes1 {
+    text-align: center;
+}
+img{
+    transition: 0.5s;
+    object-fit: cover;
+}
+img:hover{
+    transform: scale(1.1);
+}
+.contenedor {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+.item {
+    flex: 0 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
