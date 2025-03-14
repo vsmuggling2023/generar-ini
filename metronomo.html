@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrónomo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/estilos2.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet"
+</head>
+<body class="bg-light">
+    <div class="container text-center py-5">
+        <h1 class="display-4 mb-4">Metrónomo</h1>
+        <div class="metronome">
+            <div class="metronome-arm" id="metronomeArm"></div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <center><div class="mb-2"> <!-- Reducimos el margen inferior -->
+                    <label for="bpm" class="form-label">BPM:</label>
+                    <input type="number" id="bpm" class="form-control form-control-sm" value="60" min="40" max="200" style="width:70px"> <!-- Input más pequeño -->
+                </div>
+                <div class="mb-2"> <!-- Reducimos el margen inferior -->
+                    <label for="timeSignature" class="form-label">Compás:</label>
+                    <select id="timeSignature" class="form-select form-select-sm" style="width:70px"> <!-- Select más pequeño -->
+                        <option value="4/4">4/4</option>
+                        <option value="3/4">3/4</option>
+                        <option value="5/4">5/4</option>
+                        <option value="5/8">5/8</option>
+                        <option value="6/8">6/8</option>
+                        <option value="7/8">7/8</option>
+                    </select>
+                </div></center>
+                <button id="startStopButton" class="btn btn-primary btn-sm w-70">Iniciar</button> <!-- Botón más pequeño -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Script del metrónomo -->
+    <script src="js/metronomo.js"></script>
+</body>
+</html>
