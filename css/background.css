@@ -1,15 +1,17 @@
-body{
-  background-image:url(../img/backgrounds.png);
+body {
+  background-image: url(../img/background.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
-.bg-dark{
-  background-image:url(../img/backgrounds.png);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  
-}
-.nav-link{
-  color: #ff0000 !important; 
+  background-size: cover; /* Ajusta la imagen para cubrir toda el área */
 }
 
+.bg-dark {
+  background-image: url(../img/background.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; /* Ajusta la imagen para cubrir toda el área */
+}
+
+.nav-link {
+  color: #ff0000 !important;
+}
