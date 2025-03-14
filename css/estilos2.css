@@ -1,0 +1,36 @@
+.metronome {
+    width: 100px;
+    height: 200px;
+    background-color: #343a40;
+    position: relative;
+    margin: 50px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.metronome-arm {
+    width: 10px;
+    height: 150px;
+    background-color: #ffc107;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(0deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.metronome-arm.active {
+    animation: swing infinite ease-in-out;
+}
+
+@keyframes swing {
+    0% {
+        transform: translateX(-50%) rotate(-30deg); /* Inicio: brazo a la izquierda */
+    }
+    50% {
+        transform: translateX(-50%) rotate(30deg); /* Ida: brazo a la derecha */
+    }
+    100% {
+        transform: translateX(-50%) rotate(-30deg); /* Vuelta: brazo a la izquierda */
+    }
+}
